@@ -11,8 +11,10 @@ public class NavigationController {
 
     @Autowired
     UserLoginService userLoginService;
+
     @PostMapping("/login")
-    public String Login(@RequestBody Map<String,Object>data){
+    public String Login(@RequestBody Map<String,Object> data){
+        System.out.println("Called the login");
         return userLoginService.UserLoginCheckService(data);
     }
 }

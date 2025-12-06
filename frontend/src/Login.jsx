@@ -40,10 +40,10 @@ export default function Login() {
           <div class="row w-100 mx-0">
             <div class="col-lg-4 mx-auto" style={{boxShadow: "20px 20px 200px 10px grey"}} >
               <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                <div class="brand-logo">
-                  {/* <img src="../../assets/images/logo.svg" alt="logo" /> */}
+                <div class="brand-logo" style={{textAlign:'center',marginBottom:'15px'}}>
+                  <img style={{width:'80px',height:'80px'}} src="/src/assets/images/hft_logo_symbol.png" alt="logo" />
                 </div>
-                <h3 class="font-weight-light">FinTech Login</h3>
+                <h3 class="font-weight-light" style={{margin:'auto',width:'fit-content'}} >HandFinTech Login</h3>
                 <form class="pt-3">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-lg" id="user_name" value={username} onChange={(e) => setUsername(e.target.value.trim())} placeholder="Username" />

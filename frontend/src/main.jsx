@@ -4,8 +4,10 @@ import './index.css'
 import App from './App.jsx'
 import Login from './Login.jsx'
 
+console.log("sfdsfd")
+
 createRoot(document.getElementById('root1')).render(
   <StrictMode>
     <Login />
-  </StrictMode>,
+  </StrictMode>
 )
