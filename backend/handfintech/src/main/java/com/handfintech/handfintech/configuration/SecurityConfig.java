@@ -1,4 +1,5 @@
 package com.handfintech.handfintech.configuration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,8 +20,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
 
         return http.build();
@@ -38,5 +38,13 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
+    }
+
+    @Bean(name = "jwtSecurityFilter")
+    public FilterRegistrationBean<JwtFilter> jwtFilter(JwtFilter jwtFilter) {
+        FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(jwtFilter);
+        registrationBean.addUrlPatterns("/api/*"); // Protect only /api endpoints
+        return registrationBean;
     }
 }

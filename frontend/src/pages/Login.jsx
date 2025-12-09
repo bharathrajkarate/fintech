@@ -1,6 +1,12 @@
 import { useState } from "react";
 
 export default function Login() {
+
+    fetch("http://localhost:8089/BBBkjdsfkjijijoieur_eriisdjf88_i8eewr898", {
+          method: "GET",
+          credentials: "include",
+      });
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,8 +23,10 @@ export default function Login() {
       }
 
       if(flag == true){
-        const response = await fetch("http://localhost:8080/login", {
+        try{
+        const response = await fetch("http://localhost:8089/login", {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json"
           },
@@ -28,8 +36,22 @@ export default function Login() {
           })
         });
 
-        const data = await response.text();
-        alert(data);
+         if (response.ok) {
+            location.href = "/dashboard";
+          } else {
+            alert("Username or password incorrect");
+          }
+          
+        } catch (error) {
+          alert(error);
+        }
+        
+
+        //  fetch("http://localhost:8089/logout_page", {
+        //   method: "GET",
+        //   credentials: "include",
+        // });
+        
       }
     };
 
